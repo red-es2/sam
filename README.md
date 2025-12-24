@@ -11,19 +11,6 @@ This repository contains research, experiments, and implementations related to s
 - **Experimental Results**: Benchmarks, performance analysis, and visualizations.
 - **References**: Key papers and resources for further reading.
 
-## Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/simulated-annealing-research.git
-   ```
-2. Explore the code and documentation.
-3. Run experiments as described in the relevant folders.
-
-## Contributing
-
-Contributions are welcome! Please open issues or submit pull requests for improvements, bug fixes, or new experiments.
-
 ## License
 
 This project is licensed under the MIT License.
