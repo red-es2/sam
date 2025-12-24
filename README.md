@@ -14,7 +14,3 @@ This repository contains research, experiments, and implementations related to s
 ## License
 
 This project is licensed under the MIT License.
-
-## Contact
-
-For questions or collaboration opportunities, feel free to contact [your email or GitHub profile].
