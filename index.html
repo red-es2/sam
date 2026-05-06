@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Aericore</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="A violet and white fire, minimalist, cute..png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Header Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS:wght@100..400&display=swap" rel="stylesheet">
+
+  <!-- Body / UI Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .splash {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      z-index: 2;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    .splash.fade-out { opacity: 0; }
+
+    .logo {
+      width: clamp(120px, 30vw, 260px);
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .auth {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .auth.show { opacity: 1; }
+
+    .auth h1 {
+      font-family: 'Playwrite DE SAS', sans-serif;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-top: 1rem;
+    }
+
+    /* 🔥 Header logo styling (NEW) */
+    .header-logo {
+      width: 80px; /* 👈 tweak this to test size */
+      margin: 0.5rem auto 0.8rem;
+      display: block;
+      opacity: 0.9;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 18px;
+
+      border: 2px solid rgba(255,255,255,0.25);
+
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .input-group input::placeholder { opacity: 0.6; }
+
+    .input-group input:focus {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 0 8px rgba(255,255,255,0.15);
+    }
+
+    .forgot {
+      text-align: right;
+      font-size: 0.85rem;
+      margin-top: -0.5rem;
+    }
+
+    .forgot a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .forgot a:hover { opacity: 1; }
+
+    .forgot a:active {
+      opacity: 1;
+    }
+
+    .auth button {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 18px;
+      border: none;
+
+      background: #8a2be2;
+      color: #ffffff;
+
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .auth button:hover {
+      background: #9b4dff;
+    }
+
+    .auth button:active {
+      background: #9b4dff;
+    }
+
+    .auth .extra {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .auth .extra a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .auth .extra a:hover { opacity: 1; }
+
+    .auth .extra a:active {
+      opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+      body { align-items: center; }
+
+      .auth {
+        border-radius: 16px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="splash" id="splash">
+    <img src="A violet and white fire, minimalist, cute..png" class="logo" />
+  </div>
+
+  <div class="auth" id="auth">
+    <h1>Aericore</h1>
+
+    <!-- 🔥 Logo below header (test placement) -->
+    <img src="A violet and white fire, minimalist, cute..png" class="header-logo" />
+
+    <div class="input-group">
+      <input type="email" placeholder="Email">
+    </div>
+
+    <div class="input-group">
+      <input type="password" placeholder="Password">
+    </div>
+
+    <div class="forgot">
+      <a href="#">Forgot password?</a>
+    </div>
+
+    <button>Sign In</button>
+
+    <div class="extra">
+      <a href="#">Don't have an account? Sign up.</a>
+    </div>
+  </div>
+
+  <script>
+    const splash = document.getElementById('splash');
+    const auth = document.getElementById('auth');
+
+    setTimeout(() => {
+      splash.classList.add('fade-out');
+
+      setTimeout(() => {
+        splash.style.display = 'none';
+        auth.classList.add('show');
+      }, 800);
+
+    }, 2000);
+  </script>
+</body>
+</html>
