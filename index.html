@@ -31,7 +31,22 @@
       display: flex;
       justify-content: center;
       align-items: stretch;
-      background: #000;
+
+      background:
+        radial-gradient(circle at top left,
+          rgba(168, 85, 247, 0.16),
+          transparent 30%),
+
+        radial-gradient(circle at bottom right,
+          rgba(139, 92, 246, 0.14),
+          transparent 35%),
+
+        radial-gradient(circle at center,
+          rgba(124, 58, 237, 0.08),
+          transparent 45%),
+
+        #000;
+
       color: #fff;
       overflow: hidden;
     }
@@ -48,7 +63,9 @@
       transition: opacity 0.8s ease;
     }
 
-    .splash.fade-out { opacity: 0; }
+    .splash.fade-out {
+      opacity: 0;
+    }
 
     .logo {
       width: clamp(120px, 30vw, 260px);
@@ -57,7 +74,11 @@
       filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
     }
 
-    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
     .auth {
       width: 100%;
@@ -71,27 +92,33 @@
       transition: opacity 0.8s ease;
     }
 
-    .auth.show { opacity: 1; }
+    .auth.show {
+      opacity: 1;
+    }
 
     .auth h1 {
       font-family: 'Playwrite DE SAS', sans-serif;
-      font-weight: bold;
+      font-weight: 900;
       text-align: center;
       letter-spacing: 2px;
       margin-top: 1rem;
     }
 
-    /* 🔥 Header logo styling (NEW) */
     .header-logo {
-      width: 80px; /* 👈 tweak this to test size */
+      width: 80px;
       margin: 0.5rem auto 0.8rem;
       display: block;
       opacity: 0.9;
     }
 
+    .input-group {
+      position: relative;
+    }
+
     .input-group input {
       width: 100%;
       padding: 1rem;
+      padding-right: 5.5rem;
       font-size: 1rem;
       border-radius: 18px;
 
@@ -103,12 +130,44 @@
       transition: all 0.2s ease;
     }
 
-    .input-group input::placeholder { opacity: 0.6; }
+    .input-group input::placeholder {
+      opacity: 0.6;
+    }
 
     .input-group input:focus {
       border-color: rgba(255,255,255,0.6);
       background: rgba(255,255,255,0.08);
       box-shadow: 0 0 8px rgba(255,255,255,0.15);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background: transparent;
+      border: none;
+      outline: none;
+
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.7;
+
+      font-size: 0.85rem;
+      font-weight: 400;
+
+      cursor: pointer;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .toggle-password:hover {
+      opacity: 1;
+    }
+
+    .toggle-password:active {
+      opacity: 1;
     }
 
     .forgot {
@@ -124,33 +183,64 @@
       transition: opacity 0.2s ease;
     }
 
-    .forgot a:hover { opacity: 1; }
+    .forgot a:hover {
+      opacity: 1;
+    }
 
     .forgot a:active {
       opacity: 1;
     }
 
-    .auth button {
+    /* 🔥 BUTTON BACKGROUND BRIGHTNESS CONTROL */
+    /* Change the rgba value below */
+    /* Example: 0.10 → darker | 0.25 → brighter */
+
+    .auth button.sign-in-btn {
       width: 100%;
       padding: 1rem;
       border-radius: 18px;
-      border: none;
 
-      background: #8a2be2;
-      color: #ffffff;
+      /* 🔥 Uniform brighter faint violet background */
+      background: rgba(138,43,226,0.11);
 
-      font-weight: 600;
+      color: #8a2be2;
+
+      border: 3px solid #8a2be2;
+
+      font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.2s ease;
+
+      box-shadow:
+        0 0 6px rgba(138,43,226,0.4),
+        0 0 14px rgba(138,43,226,0.28),
+        inset 0 0 8px rgba(138,43,226,0.12);
+
+      transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.25s ease,
+        background 0.2s ease;
     }
 
-    .auth button:hover {
-      background: #9b4dff;
+    .auth button.sign-in-btn:hover {
+      border-color: #b56dff;
+      color: #b56dff;
+
+      box-shadow:
+        0 0 8px rgba(181,109,255,0.5),
+        0 0 18px rgba(181,109,255,0.35),
+        inset 0 0 8px rgba(181,109,255,0.1);
     }
 
-    .auth button:active {
-      background: #9b4dff;
+    .auth button.sign-in-btn:active {
+      border-color: #c58cff;
+      color: #c58cff;
+
+      box-shadow:
+        0 0 9px rgba(197,140,255,0.55),
+        0 0 20px rgba(197,140,255,0.38),
+        inset 0 0 8px rgba(197,140,255,0.12);
     }
 
     .auth .extra {
@@ -166,14 +256,18 @@
       transition: opacity 0.2s ease;
     }
 
-    .auth .extra a:hover { opacity: 1; }
+    .auth .extra a:hover {
+      opacity: 1;
+    }
 
     .auth .extra a:active {
       opacity: 1;
     }
 
     @media (min-width: 768px) {
-      body { align-items: center; }
+      body {
+        align-items: center;
+      }
 
       .auth {
         border-radius: 16px;
@@ -194,7 +288,6 @@
   <div class="auth" id="auth">
     <h1>Aericore</h1>
 
-    <!-- 🔥 Logo below header (test placement) -->
     <img src="A violet and white fire, minimalist, cute..png" class="header-logo" />
 
     <div class="input-group">
@@ -202,14 +295,22 @@
     </div>
 
     <div class="input-group">
-      <input type="password" placeholder="Password">
+      <input type="password" id="password" placeholder="Password">
+
+      <button
+        type="button"
+        class="toggle-password"
+        onclick="togglePassword()"
+      >
+        Show
+      </button>
     </div>
 
     <div class="forgot">
       <a href="#">Forgot password?</a>
     </div>
 
-    <button>Sign In</button>
+    <button class="sign-in-btn">Sign In</button>
 
     <div class="extra">
       <a href="#">Don't have an account? Sign up.</a>
@@ -219,6 +320,25 @@
   <script>
     const splash = document.getElementById('splash');
     const auth = document.getElementById('auth');
+
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleButton = document.querySelector('.toggle-password');
+
+      toggleButton.style.opacity = '0';
+
+      setTimeout(() => {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          toggleButton.textContent = 'Hide';
+        } else {
+          passwordInput.type = 'password';
+          toggleButton.textContent = 'Show';
+        }
+
+        toggleButton.style.opacity = '0.7';
+      }, 120);
+    }
 
     setTimeout(() => {
       splash.classList.add('fade-out');
